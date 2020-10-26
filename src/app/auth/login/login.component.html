@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <h2 class="text-center text-primary">Login</h2>
+        <hr>
+
+        <div class="form-group">
+          <input type="email"
+            [ngClass]="{'is-invalid': loginForm.get('email').errors && loginForm.get('email').touched}"
+            class="form-control" formControlName="email" placeholder="Email">
+            <div class="invalid-feedback">Email is required</div>
+        </div>
+
+        <div class="form-group">
+          <input type="password"
+            [ngClass]="{'is-invalid': loginForm.get('password').errors && loginForm.get('password').touched}"
+            class="form-control" formControlName="password" placeholder="Password">
+
+            <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
+              class="invalid-feedback">Password is required</div>
+
+            <div *ngIf="loginForm.get('password').hasError('minlength') && loginForm.get('password').touched"
+              class="invalid-feedback">Password should be atleast 8 characters</div>
+
+            <div *ngIf="loginForm.get('password').hasError('maxlength') && loginForm.get('password').touched"
+              class="invalid-feedback">Password should be less than 20 characters</div>
+        </div>
+
+        <div class="form-group text-center">
+          <button class="btn btn-success mr-2" [disabled]="!loginForm.valid" type="submit">Login</button>
+          <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
