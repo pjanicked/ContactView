@@ -1,6 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from 'src/app/_services/auth.service';
+import { Router } from '@angular/router';
+
+declare let alertify: any;
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +14,8 @@ export class RegisterComponent implements OnInit {
   @Output() authCancel = new EventEmitter();
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.createRegForm();
@@ -31,6 +36,17 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.registerForm.value);
+    if (this.registerForm.valid) {
+      this.authService.register(this.registerForm.value).subscribe(() => {
+        alertify.success('Registered Successfully!');
+        alertify.success('We have sent a confirmation email to your email address. Please click om that link and then login again!');
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 5000);
+      }, error => {
+        alertify.error(error.error);
+      });
+    }
   }
 
   cancel() {

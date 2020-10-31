@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
 
+declare let alertify: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.createLoginForm();
@@ -26,6 +29,14 @@ export class LoginComponent implements OnInit {
 
 login() {
   console.log(this.loginForm.value);
+  this.authService.login(this.loginForm.value).subscribe(
+    () => {
+      alertify.success('Logged in successfully');
+      this.router.navigate(['/contacts']);
+    },
+    error => {
+      alertify.error(error.error);
+    });
 }
 
 cancel() {
