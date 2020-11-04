@@ -6,6 +6,7 @@ import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { ContactsComponent } from './contacts/contacts.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -13,6 +14,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { NavComponent } from './nav/nav.component';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './auth/register/register.component';
+import { ResetpasswordComponent } from './auth/resetpassword/resetpassword.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 
@@ -27,7 +29,9 @@ export function tokenGetter() {
     RegisterComponent,
     HomeComponent,
     LoginComponent,
-      ContactsComponent
+    ContactsComponent,
+    ForgotpasswordComponent,
+    ResetpasswordComponent
    ],
   imports: [
     BrowserModule,

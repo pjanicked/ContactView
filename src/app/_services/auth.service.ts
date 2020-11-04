@@ -28,6 +28,14 @@ login(model: any) {
   );
 }
 
+forgotpassword(model: any) {
+  return this.http.post(this.baseUrl + 'forgotpassword', model);
+}
+
+resetPassword(model: any) {
+  return this.http.post(this.baseUrl + 'resetpassword', model);
+}
+
 loggedIn() {
   const token = localStorage.getItem('token');
   return !this.jwtHelper.isTokenExpired(token);

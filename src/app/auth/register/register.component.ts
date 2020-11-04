@@ -35,11 +35,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe(() => {
         alertify.success('Registered Successfully!');
-        alertify.success('We have sent a confirmation email to your email address. Please click om that link and then login again!');
+        alertify.success('We have sent a confirmation email to your email address. Please click on that link and then login again!');
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 5000);
