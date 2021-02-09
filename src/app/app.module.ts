@@ -4,8 +4,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { BsDropdownModule } from 'ngx-bootstrap';
-import { ContactsComponent } from './contacts/contacts.component';
+import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +16,12 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ResetpasswordComponent } from './auth/resetpassword/resetpassword.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { ContactService } from './_services/contact.service';
+import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+import { ContactCardComponent } from './contacts/contact-card/contact-card.component';
+import { ContactListResolver } from './_resolvers/contact-list.resolver';
+import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -29,9 +34,12 @@ export function tokenGetter() {
     RegisterComponent,
     HomeComponent,
     LoginComponent,
-    ContactsComponent,
+    ContactListComponent,
+    ContactCardComponent,
     ForgotpasswordComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    ContactEditComponent,
+    ContactDetailComponent
    ],
   imports: [
     BrowserModule,
@@ -40,17 +48,20 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    PaginationModule.forRoot(),
     JwtModule.forRoot({
       config: {
          tokenGetter: tokenGetter,
-         whitelistedDomains: ['localhost:5000'],
-         blacklistedRoutes: ['localhost:5000/api/auth']
+         whitelistedDomains: ['localhost:5000', 'localhost:44331'],
+         blacklistedRoutes: ['localhost:5000/api/auth', 'localhost:44331/api/auth']
       }
    })
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ContactService,
+    ContactListResolver
   ],
   bootstrap: [AppComponent]
 })
