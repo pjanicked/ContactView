@@ -8,6 +8,7 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
 import { ContactListResolver } from './_resolvers/contact-list.resolver';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
+import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 
 export const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,7 +21,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
         {path: 'contacts', component: ContactListComponent, resolve: {contactList: ContactListResolver} },
-        {path: 'contacts/:id', component: ContactDetailComponent },
+        {path: 'contacts/:id', component: ContactDetailComponent, resolve: {contact: ContactDetailResolver} },
         {path: 'contacts/edit/:id', component: ContactEditComponent },
     ]
 },

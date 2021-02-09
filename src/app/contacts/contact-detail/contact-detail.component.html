@@ -1,3 +1,68 @@
-<p>
-  contact-detail works!
-</p>
+<div class="container">
+  <div class="row">
+    <h1>Your contact details</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="card">        
+        <div class="card-body">
+          <div>
+            <strong>Name:</strong>
+            <p>{{contact.name}}</p>
+          </div>
+          <div>
+            <strong>Company:</strong>
+            <p>{{contact.company}}</p>
+          </div>
+          <div>
+            <strong>Email:</strong>
+            <p>{{contact.email}}</p>
+          </div>
+          <div>
+            <strong>Phone:</strong>
+            <p>{{contact.phone}}</p>
+          </div>
+          <div>
+            <strong>Address:</strong>
+            <p>{{contact.address}}</p>
+          </div>
+          <div>
+            <strong>Description:</strong>
+            <p>{{contact.description}}</p>
+          </div>
+          <div>
+            <strong>CompanyUrl:</strong>
+            <p>{{contact.companyUrl}}</p>
+          </div>
+          <div>
+            <strong>CreatedAt:</strong>
+            <p>{{contact.createdAt | date}}</p>
+          </div>
+          <div>
+            <strong>UpdatedAt:</strong>
+            <p>{{contact.updatedAt | date}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Edit</button>
+            <button class="btn btn-danger w-100">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-7"> <!--Tabbed Panel-->
+      <div class="row">
+        <div *ngFor="let note of contact.notes" class="col-lg-2 col-md-3 col-sm-6">
+          <div class="card mb-4">
+            <div class="card-body p-1">
+              <h6 class="card-title text-center mb-2.5">{{note.noteText}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+
+  </div>
+</div>

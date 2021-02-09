@@ -22,6 +22,7 @@ import { ContactCardComponent } from './contacts/contact-card/contact-card.compo
 import { ContactListResolver } from './_resolvers/contact-list.resolver';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
+import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -61,7 +62,8 @@ export function tokenGetter() {
     AuthService,
     AuthGuard,
     ContactService,
-    ContactListResolver
+    ContactListResolver,
+    ContactDetailResolver
   ],
   bootstrap: [AppComponent]
 })

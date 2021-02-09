@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
+import { Contact } from '../_models/contact';
 import { ContactList } from '../_models/contactist';
 import { PaginatedResult } from '../_models/pagination';
 
@@ -39,6 +40,10 @@ getAllContacts(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<Co
       return paginationResultObj;
     })
   );
+}
+
+getContact(id): Observable<Contact> {
+  return this.http.get<Contact>(this.baseUrl + id);
 }
 
 }
