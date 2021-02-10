@@ -56,8 +56,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
          tokenGetter: tokenGetter,
-         whitelistedDomains: ['localhost:5000', 'localhost:44331', 'contactviewapi.herokuapp.com'],
-         blacklistedRoutes: ['localhost:5000/api/auth', 'localhost:44331/api/auth', 'contactviewapi.herokuapp.com/api/auth']
+         whitelistedDomains: ['localhost:44331', 'contactviewapi.herokuapp.com'],
+         blacklistedRoutes: ['localhost:44331/api/auth', 'contactviewapi.herokuapp.com/api/auth']
       }
    })
   ],
