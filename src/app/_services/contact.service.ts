@@ -11,7 +11,7 @@ import { PaginatedResult } from '../_models/pagination';
   providedIn: 'root'
 })
 export class ContactService {
-  baseUrl = 'https://localhost:44331/api/contact/';
+  baseUrl = 'https://contactviewapi.herokuapp.com/api/contact';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
@@ -43,11 +43,11 @@ getAllContacts(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<Co
 }
 
 getContact(id): Observable<Contact> {
-  return this.http.get<Contact>(this.baseUrl + id);
+  return this.http.get<Contact>(this.baseUrl + '/' + id);
 }
 
 deleteContact(id) {
-  return this.http.delete(this.baseUrl + id);
+  return this.http.delete(this.baseUrl + '/' + id);
 }
 
 addContact(model: any) {
