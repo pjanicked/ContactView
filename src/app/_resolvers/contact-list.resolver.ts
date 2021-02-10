@@ -9,7 +9,7 @@ declare let alertify: any;
 @Injectable()
 export class ContactListResolver implements Resolve<ContactList[]> {
     pageNumber = 1;
-    pageSize = 5;
+    pageSize = 8;
     constructor(private contactService: ContactService, private router: Router) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<ContactList[]> {

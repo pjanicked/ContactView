@@ -1,7 +1,8 @@
-<div class="container mt-5">
+<div class="container mt-3">
+  <button class="btn btn-primary mb-4 float-right" [routerLink]="['/contacts/add']"><i class="fa fa-plus-circle"></i>   Add Contact</button>
 <br>
 <div class="row">
-  <div *ngFor="let contact of contactList" class="col-lg-2 col-md-3 col-sm-6">
+  <div *ngFor="let contact of contactList" class="col-lg-3 col-md-3 col-sm-6">
     <app-contact-card [contact]="contact"></app-contact-card>
   </div>
 </div>

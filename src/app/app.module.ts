@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
+import { BsDropdownModule, ModalModule, PaginationModule } from 'ngx-bootstrap';
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +23,7 @@ import { ContactListResolver } from './_resolvers/contact-list.resolver';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
+import { ContactAddComponent } from './contacts/contact-add/contact-add.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -40,7 +41,8 @@ export function tokenGetter() {
     ForgotpasswordComponent,
     ResetpasswordComponent,
     ContactEditComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    ContactAddComponent
    ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     HttpClientModule,
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {
          tokenGetter: tokenGetter,

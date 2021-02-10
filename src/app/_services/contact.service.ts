@@ -46,4 +46,12 @@ getContact(id): Observable<Contact> {
   return this.http.get<Contact>(this.baseUrl + id);
 }
 
+deleteContact(id) {
+  return this.http.delete(this.baseUrl + id);
+}
+
+addContact(model: any) {
+  return this.http.post(this.baseUrl, model);
+}
+
 }

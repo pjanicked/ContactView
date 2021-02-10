@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-4">
+<form [formGroup]="contactForm" (ngSubmit)="submit()">
+  <h2 class="text-center text-primary">Lets add a contact!</h2>
+  <hr>
+
+  <div class="form-group">
+    <input type="text"
+      [ngClass]="{'is-invalid': contactForm.get('name').errors && contactForm.get('name').touched}"
+      class="form-control" formControlName="name" placeholder="Name">
+      <div class="invalid-feedback">Name is required</div>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+      [ngClass]="{'is-invalid': contactForm.get('company').errors && contactForm.get('company').touched}"
+      class="form-control" formControlName="company" placeholder="Company">
+      <div class="invalid-feedback">Company is required</div>
+  </div>
+
+  <div class="form-group">
+    <input type="email"
+      [ngClass]="{'is-invalid': contactForm.get('email').errors && contactForm.get('email').touched}"
+      class="form-control" formControlName="email" placeholder="Email">
+      <div class="invalid-feedback">Email is required</div>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+      [ngClass]="{'is-invalid': contactForm.get('phone').errors && contactForm.get('phone').touched}"
+      class="form-control" formControlName="phone" placeholder="Phone">
+      <div class="invalid-feedback">Phone is required</div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="address" placeholder="Address">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="description" placeholder="Description">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="companyUrl" placeholder="Company Url">
+  </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success mr-2" [disabled]="!contactForm.valid" type="submit">Add</button>
+  </div>
+
+</form>
+</div>
+</div>
+</div>

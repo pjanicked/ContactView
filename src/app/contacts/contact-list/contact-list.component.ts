@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactList } from 'src/app/_models/contactist';
 import { PaginatedResult, Pagination } from 'src/app/_models/pagination';
 import { ContactService } from 'src/app/_services/contact.service';
@@ -16,7 +16,8 @@ export class ContactListComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('user'));
   userParams: any = {};
 
-  constructor(private contactService: ContactService, private route: ActivatedRoute) { }
+  constructor(private contactService: ContactService, private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -42,5 +43,4 @@ export class ContactListComponent implements OnInit {
         alertify.error(error.error);
       });
   }
-
 }
