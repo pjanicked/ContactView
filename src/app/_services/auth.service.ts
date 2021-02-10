@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = 'https://localhost:44331/api/auth/';
+  baseUrl = 'https://contactviewapi.herokuapp.com/api/auth/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 

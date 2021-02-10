@@ -11,7 +11,7 @@ import { PaginatedResult } from '../_models/pagination';
   providedIn: 'root'
 })
 export class ContactService {
-  baseUrl = 'https://localhost:44331/api/contact/';
+  baseUrl = 'https://contactviewapi.herokuapp.com/api/contact/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 

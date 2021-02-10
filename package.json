@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -24,6 +24,7 @@
     "alertifyjs": "^1.13.1",
     "bootstrap": "^4.5.3",
     "core-js": "^2.5.4",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^3.0.1",
     "rxjs": "6.3.3",
