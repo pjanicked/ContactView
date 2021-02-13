@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Contact } from '../_models/contact';
 import { ContactList } from '../_models/contactist';
 import { PaginatedResult } from '../_models/pagination';
@@ -11,7 +12,7 @@ import { PaginatedResult } from '../_models/pagination';
   providedIn: 'root'
 })
 export class ContactService {
-  baseUrl = 'https://contactviewapi.herokuapp.com/api/contact';
+  baseUrl = environment.apiEndpoint;
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
@@ -30,7 +31,7 @@ getAllContacts(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<Co
     params = params.append('orderBy', userParams.orderBy);
   }
 
-  return this.http.get<ContactList[]>(this.baseUrl, {observe: 'response', params})
+  return this.http.get<ContactList[]>(this.baseUrl + 'contact', {observe: 'response', params})
   .pipe(
     map(response => {
       paginationResultObj.result = response.body;
@@ -43,15 +44,15 @@ getAllContacts(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<Co
 }
 
 getContact(id): Observable<Contact> {
-  return this.http.get<Contact>(this.baseUrl + '/' + id);
+  return this.http.get<Contact>(this.baseUrl + 'contact/' + id);
 }
 
 deleteContact(id) {
-  return this.http.delete(this.baseUrl + '/' + id);
+  return this.http.delete(this.baseUrl + 'contact/' + id);
 }
 
 addContact(model: any) {
-  return this.http.post(this.baseUrl, model);
+  return this.http.post(this.baseUrl + 'contact', model);
 }
 
 }
