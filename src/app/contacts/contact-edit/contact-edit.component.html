@@ -1,3 +1,52 @@
-<p>
-  contact-edit works!
-</p>
+<div class="container mt-5">
+  <div class="col-sm-8">
+    <div *ngIf="contactForm.dirty" class="alert alert-info">
+      <strong>Infromation</strong> You have unsaved changes. Save it to prevent loss!
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-sm-5">
+<form [formGroup]="contactForm" (ngSubmit)="submit()">
+  <h2 class="text-center text-primary">Lets edit your contact!</h2>
+  <hr>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="name" placeholder="Name" [(ngModel)]="contact.name">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="company" placeholder="Company" [(ngModel)]="contact.company">
+  </div>
+
+  <div class="form-group">
+    <input type="email" class="form-control" formControlName="email" placeholder="Email" [(ngModel)]="contact.email">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="phone" placeholder="Phone" [(ngModel)]="contact.phone">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="address" placeholder="Address" [(ngModel)]="contact.address">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="description" placeholder="Description" [(ngModel)]="contact.description">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="companyUrl" placeholder="Company Url" [(ngModel)]="contact.companyUrl">
+  </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success mr-2" [disabled]="!contactForm.valid" type="submit">Update</button>
+  </div>
+
+</form>
+</div>
+
+<div col-sm-3>
+</div>
+
+</div>
+</div>

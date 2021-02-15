@@ -24,6 +24,7 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 import { ContactAddComponent } from './contacts/contact-add/contact-add.component';
+import { ContactEditResolver } from './_resolvers/contact-edit.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -66,7 +67,8 @@ export function tokenGetter() {
     AuthGuard,
     ContactService,
     ContactListResolver,
-    ContactDetailResolver
+    ContactDetailResolver,
+    ContactEditResolver
   ],
   bootstrap: [AppComponent]
 })
