@@ -1,0 +1,9 @@
+<div class="container mt-3">
+  <button class="btn btn-primary mb-4 float-right" [routerLink]="['/contacts/add']"><i class="fa fa-plus-circle"></i>   Add Note</button>
+<br>
+<div class="row">
+  <div *ngFor="let note of noteList" class="col-lg-3 col-md-3 col-sm-6">
+    <app-note-card [note]="note"></app-note-card>
+  </div>
+</div>
+</div>
