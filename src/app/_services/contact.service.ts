@@ -55,4 +55,8 @@ addContact(model: any) {
   return this.http.post(this.baseUrl + 'contact', model);
 }
 
+updateContact(id, model: any) {
+  return this.http.put(this.baseUrl + 'contact/' + id, model);
+}
+
 }

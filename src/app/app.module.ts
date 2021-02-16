@@ -24,6 +24,9 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 import { ContactAddComponent } from './contacts/contact-add/contact-add.component';
+import { ContactEditResolver } from './_resolvers/contact-edit.resolver';
+import { NoteCardComponent } from './notes/note-card/note-card.component';
+import { NoteListComponent } from './notes/note-list/note-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,7 +45,9 @@ export function tokenGetter() {
     ResetpasswordComponent,
     ContactEditComponent,
     ContactDetailComponent,
-    ContactAddComponent
+    ContactAddComponent,
+    NoteCardComponent,
+    NoteListComponent
    ],
   imports: [
     BrowserModule,
@@ -66,7 +71,8 @@ export function tokenGetter() {
     AuthGuard,
     ContactService,
     ContactListResolver,
-    ContactDetailResolver
+    ContactDetailResolver,
+    ContactEditResolver
   ],
   bootstrap: [AppComponent]
 })

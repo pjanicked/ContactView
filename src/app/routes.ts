@@ -10,6 +10,7 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
 import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 import { ContactAddComponent } from './contacts/contact-add/contact-add.component';
+import { ContactEditResolver } from './_resolvers/contact-edit.resolver';
 
 export const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,7 +25,7 @@ export const appRoutes: Routes = [
         {path: 'contacts', component: ContactListComponent, resolve: {contactList: ContactListResolver} },
         {path: 'contacts/add', component: ContactAddComponent },
         {path: 'contacts/:id', component: ContactDetailComponent, resolve: {contact: ContactDetailResolver} },
-        {path: 'contacts/edit/:id', component: ContactEditComponent },
+        {path: 'contacts/edit/:id', component: ContactEditComponent, resolve: {contact: ContactEditResolver} },
     ]
 },
   {path: '**', redirectTo: '', pathMatch: 'full'},
