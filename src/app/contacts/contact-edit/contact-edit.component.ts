@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from 'src/app/_models/contact';
 import { ContactService } from 'src/app/_services/contact.service';
 
+declare let alertify: any;
 @Component({
   selector: 'app-contact-edit',
   templateUrl: './contact-edit.component.html',
@@ -42,7 +43,15 @@ export class ContactEditComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.contactForm.value);
+    this.contactService.updateContact(this.contact.id, this.contact).subscribe(() => {
+      alertify.success('Contact updated successfully');
+      setTimeout(() => {
+        this.router.navigate(['/contacts']);
+      }, 3000);
+    },
+    error => {
+      alertify.error(error.error);
+    });
   }
 
 }

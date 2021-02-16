@@ -1,5 +1,17 @@
 <div class="container mt-3">
-  <button class="btn btn-primary mb-4 float-right" [routerLink]="['/contacts/add']"><i class="fa fa-plus-circle"></i>   Add Note</button>
+  <button class="btn btn-primary mb-4 float-right" (click)="openModal(addtemplate)"><i class="fa fa-plus-circle"></i>   Add Note</button>
+  <ng-template #addtemplate>
+    <div class="modal-body text-center">
+      <p>Add your note</p>
+      <form [formGroup]="addNoteForm">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="noteText" placeholder="Text">
+        </div>
+      </form>
+      <button type="button" class="btn btn-primary" (click)="addNote()" >Add</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+    </div>
+  </ng-template>
 <br>
 <div class="row">
   <div *ngFor="let note of noteList" class="col-lg-3 col-md-3 col-sm-6">

@@ -27,7 +27,7 @@ export class NoteCardComponent implements OnInit {
     this.noteForm = this.fb.group({
       id: [''],
       noteText: ['', Validators.required],
-      contactid: [''],
+      contactId: [''],
     });
   }
 

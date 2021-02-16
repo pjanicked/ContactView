@@ -45,14 +45,13 @@
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
-            <button class="btn btn-primary w-100">Edit</button>
-            <button class="btn btn-danger w-100">Delete</button>
+            <button class="btn btn-primary w-100" [routerLink]="['/contacts/edit/' + contact.id]">Edit</button>            
           </div>
         </div>
       </div>
     </div>
     
-    <div class="col-sm-7"> <!--Tabbed Panel-->
+    <div class="col-sm-7">
       <div class="row">
         <div *ngFor="let note of contact.notes" class="col-lg-2 col-md-3 col-sm-6">
           <div class="card mb-4">
