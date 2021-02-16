@@ -9,11 +9,14 @@ declare let alertify: any;
 })
 export class NoteListComponent implements OnInit {
   @Input() noteList: Notes[];
-  notesList: Notes[];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteNote(id) {
+    this.noteList.splice(this.noteList.findIndex(p => p.id === id), 1);
   }
 
 }

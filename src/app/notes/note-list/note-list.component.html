@@ -3,7 +3,7 @@
 <br>
 <div class="row">
   <div *ngFor="let note of noteList" class="col-lg-3 col-md-3 col-sm-6">
-    <app-note-card [note]="note"></app-note-card>
+    <app-note-card [note]="note" (noteDeleteEvent)="deleteNote($event)"></app-note-card>
   </div>
 </div>
 </div>

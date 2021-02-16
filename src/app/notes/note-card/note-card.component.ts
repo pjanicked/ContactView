@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Notes } from 'src/app/_models/notes';
 import { ContactService } from 'src/app/_services/contact.service';
@@ -12,27 +14,36 @@ declare let alertify: any;
 export class NoteCardComponent implements OnInit {
   @Input() note: Notes;
   modalRef: BsModalRef;
+  noteForm: FormGroup;
+  @Output() noteDeleteEvent = new EventEmitter();
 
-  constructor(private modalService: BsModalService, private contactService: ContactService) { }
+  constructor(private modalService: BsModalService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.createNoteForm();
+  }
+
+  createNoteForm() {
+    this.noteForm = this.fb.group({
+      id: [''],
+      noteText: ['', Validators.required],
+      contactid: [''],
+    });
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
 
-  confirm(id) {
-    this.contactService.deleteContact(id).subscribe(() => {
-      alertify.success('deleted successfully!');
-      setTimeout(function() {
-        window.location.reload();
-      }, 3000);
-    },
-    error => {
-      alertify.error(error);
-    });
+  editNote(id) {
     this.modalRef.hide();
+    alertify.success('note edited!');
+  }
+
+  deleteNote(id) {
+    this.noteDeleteEvent.emit(id);
+    this.modalRef.hide();
+    alertify.success('note deleted!');
   }
 
   cancel() {
